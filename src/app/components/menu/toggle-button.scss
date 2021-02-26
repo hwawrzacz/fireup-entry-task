@@ -22,7 +22,7 @@
     transition: 300ms; 
   }
   
-  &.--close > hr {
+  &.close > hr {
     &:nth-child(1) {
       transform: rotate(45deg) translate(7px, 7px);
     }

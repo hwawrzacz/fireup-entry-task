@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  private _shownOnMobile: boolean;
 
-  constructor() { }
+  constructor() {
+    this._shownOnMobile = false;
+  }
 
-  ngOnInit(): void {
+  get shownOnMobile(): boolean {
+    return this._shownOnMobile;
+  }
+
+  ngOnInit(): void { }
+
+  public toggleMenu(): void {
+    this._shownOnMobile = !this._shownOnMobile;
+    console.log(`menu showed on mobile
+    : ${this._shownOnMobile}`);
   }
 
 }

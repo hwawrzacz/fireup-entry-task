@@ -2,12 +2,14 @@
   <a>
     <img src="#" alt="Fireup logo">
   </a>
-  <button class="menu__toggle-button">
+
+  <button class="menu__toggle-button" [ngClass]="shownOnMobile ? 'close' : '' " (click)="toggleMenu()">
     <hr />
     <hr />
     <hr />
   </button>
-  <ul class="menu__items">
+
+  <ul class="menu__items" [ngClass]="shownOnMobile ? 'open' : ''">
     <li class="menu__item"><a routerLink="#">Główna</a></li>
     <li class="menu__item"><a routerLink="#">Menu 1</a></li>
     <li class="menu__item"><a routerLink="#">Menu 2</a></li>
