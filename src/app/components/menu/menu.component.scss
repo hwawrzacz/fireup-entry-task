@@ -1,0 +1,37 @@
+@import './toggle-button';
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__toggle-button {
+    display: none;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: nowrap;
+    align-self: flex-end;
+  
+    list-style: none;
+    text-decoration: none;
+  }
+  &__item {
+    &--active {
+      background-color: rgb(235, 125, 74);
+      color: rgb(230, 217, 106)
+    }
+
+    &:hover {
+      background-color: rgb(235, 125, 74);
+      color: rgb(230, 217, 106)
+    }
+  }
+}
+
+.menu--mobile {
+  &__toggle-button {
+    @include toggle-button; 
+  }
+}
