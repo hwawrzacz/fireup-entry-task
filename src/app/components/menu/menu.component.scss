@@ -1,3 +1,4 @@
+@import '../../../style/variables';
 @import './toggle-button';
 
 .menu {
@@ -5,10 +6,12 @@
   justify-content: space-between;
   align-items: center;
 
+  // TOGGLE BUTTON
   &__toggle-button {
     display: none;
   }
 
+  // MENU LIST
   &__items {
     display: flex;
     flex-wrap: nowrap;
@@ -17,6 +20,8 @@
     list-style: none;
     text-decoration: none;
   }
+
+  // MENU LIST ITEM
   &__item {
     &--active {
       background-color: rgb(235, 125, 74);
@@ -30,8 +35,45 @@
   }
 }
 
-.menu--mobile {
-  &__toggle-button {
-    @include toggle-button; 
+//====================================================
+//====================== MOBILE ======================
+//====================================================
+// TABLET MOBILE
+@media (max-width: $breakpoint-tablet) {
+  // MENU
+  .menu {
+    position: relative;
+
+    &__toggle-button {
+      @include toggle-button; 
+    }
+
+    // MENU LIST
+    &__items {
+      position: fixed;
+      top: 0;
+      right: 0;
+      flex-direction: column;
+      height: 0;
+      overflow: hidden;
+
+      &.open {
+        height: auto;
+      }
+    }
+
+    // MENU LIST ITEM
+    &__item {
+      width:  100%;
+      &--active {
+        background-color: rgb(235, 125, 74);
+        color: rgb(230, 217, 106)
+      }
+
+      &:hover {
+        background-color: rgb(2, 125, 74);
+        color: rgb(230, 217, 106)
+      }
+    }
   }
 }
