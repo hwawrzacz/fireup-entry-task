@@ -1,0 +1,37 @@
+@import '../../../style/variables';
+
+@mixin menu-burger-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+  width: 50px;
+  height: 50px;
+  padding: $spacing-regular;
+  box-sizing: border-box;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  
+  hr {
+    width: 100%;
+    border: none;
+    height: 5px;
+    margin: 0;
+    background-color: $text-color-dark;
+    transition: $transition-normal; 
+  }
+  
+  &.close > hr {
+    &:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px) ;
+    }
+    &:nth-child(2) {
+      transform: rotate(-45deg); 
+    }
+    &:nth-child(3) {
+      opacity: 0; 
+    }
+  }
+}

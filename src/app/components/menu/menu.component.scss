@@ -1,0 +1,96 @@
+@import '../../../style/variables';
+@import '../../../style/mixins';
+@import './toggle-button';
+
+.menu {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $background-color-lvl-2;
+
+  // TOGGLE BUTTON
+  &__toggle-button {
+    display: none;
+  }
+
+  // MENU LIST
+  &__items {
+    display: flex;
+    flex-wrap: nowrap;
+    align-self: flex-end;
+  
+    list-style: none;
+    text-decoration: none;
+    background-color: inherit;
+  }
+
+  // MENU LIST ITEM
+  &__item {
+    $item-transition: $transition-fast;
+
+    position: relative;
+    transition: $item-transition;
+
+    a {
+      display: block;
+      padding: $spacing-medium $spacing-regular;
+    }
+
+    &--yellow {
+      @include menu-item-hover-active-background($color-yellow, $item-transition);
+    }
+
+    &--red {      
+      @include menu-item-hover-active-background($color-red, $item-transition);
+    }
+
+    &--green {
+      @include menu-item-hover-active-background($color-green, $item-transition);
+    }
+
+    &--lagoon {      
+      @include menu-item-hover-active-background($color-lagoon, $item-transition);
+    }
+  }
+}
+
+//====================================================
+//====================== MOBILE ======================
+//====================================================
+// TABLET MOBILE
+@media (max-width: $breakpoint-tablet) {
+  // MENU
+  .menu {
+    position: relative;
+
+    &__toggle-button {
+      z-index: 10;
+      @include menu-burger-button; 
+    }
+
+    // MENU LIST
+    &__items {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      flex-direction: column;
+      max-height: 0;
+      overflow: hidden;
+      transition: $transition-slow;
+
+      &.open {
+        max-height: 250px;
+      }
+    }
+
+    // MENU LIST ITEM
+    &__item {
+      // This margin value corresponds to value of property `$accent-line-height` from mixin `menu-item-hover-background` divided by 2
+      margin: calc(#{$spacing-small} / 2);
+      width:  100%;
+      text-align: center;
+    }
+  }
+}
