@@ -2,7 +2,7 @@
 $breakpoint-tablet: 960px;
 $breakpoint-smartphone: 768px;
 
-// SPACING
+// SPACINGS
 $spacing-tiny: 2px;
 $spacing-small: 4px;
 $spacing-regular: 8px;
@@ -10,12 +10,23 @@ $spacing-medium: 16px;
 $spacing-big: 32px;
 $spacing-huge: 64px;
 
-// COLOR
+// COLORS
 $background-color-lvl-0: #dedede;
 $background-color-lvl-1: #efefef;
 $background-color-lvl-2: #fafafa;
 $color-primary: gold;
 $color-secondary: khaki;
-$color-warn: darkred;
+
+$color-yellow: #DFBB42;
+$color-red: #C43434;
+$color-green: #508B61;
+$color-lagoon: #428D9E;
+
+$color-gray: #B0B0B0;
 $text-color-light: #fafafa;
 $text-color-dark: #121212; 
+
+// TIMING
+$transition-fast: .1s;
+$transition-normal: .3s;
+$transition-slow: .5s;
