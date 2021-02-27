@@ -1,6 +1,6 @@
 <nav class="menu">
-  <a>
-    <img src="#" alt="Fireup logo">
+  <a routerLink="/">
+    <img src="assets/images/logo.svg" alt="Fireup logo">
   </a>
 
   <button class="menu__toggle-button" [ngClass]="shownOnMobile ? 'close' : '' " (click)="toggleMenu()">
@@ -10,9 +10,9 @@
   </button>
 
   <ul class="menu__items" [ngClass]="shownOnMobile ? 'open' : ''">
-    <li class="menu__item"><a routerLink="#">Główna</a></li>
-    <li class="menu__item"><a routerLink="#">Menu 1</a></li>
-    <li class="menu__item"><a routerLink="#">Menu 2</a></li>
-    <li class="menu__item"><a routerLink="#">Pogoda</a></li>
+    <li class="menu__item menu__item--yellow"><a routerLink="/">Główna</a></li>
+    <li class="menu__item menu__item--red"><a routerLink="#">Menu 1</a></li>
+    <li class="menu__item menu__item--green"><a routerLink="#">Menu 2</a></li>
+    <li class="menu__item menu__item--lagoon"><a routerLink="/">Pogoda</a></li>
   </ul>
 </nav>

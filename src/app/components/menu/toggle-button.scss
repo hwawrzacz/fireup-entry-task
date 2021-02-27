@@ -1,4 +1,6 @@
-@mixin toggle-button {
+@import '../../../style/variables';
+
+@mixin menu-burger-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,25 +8,24 @@
   
   width: 50px;
   height: 50px;
-  padding: 10px;
+  padding: $spacing-regular;
   box-sizing: border-box;
-  background-color: white;
-  border: 2px solid black;
+  border: none;
+  background-color: inherit;
   cursor: pointer;
   
   hr {
     width: 100%;
-    border: 0;
+    border: none;
     height: 5px;
     margin: 0;
-    border-radius: 10px;
-    background-color: black;
-    transition: 300ms; 
+    background-color: $text-color-dark;
+    transition: $transition-normal; 
   }
   
   &.close > hr {
     &:nth-child(1) {
-      transform: rotate(45deg) translate(7px, 7px);
+      transform: rotate(45deg) translate(8px, 8px) ;
     }
     &:nth-child(2) {
       transform: rotate(-45deg); 
