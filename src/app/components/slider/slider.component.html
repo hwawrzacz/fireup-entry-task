@@ -1,1 +1,26 @@
-<p>slider works!</p>
+<div class="slider">
+  <mat-carousel #matCarousel timings="250ms ease-in" [autoplay]="false" [interval]="1000" maxWidth="auto" [slides]="3"
+    [maintainAspectRatio]="true" [proportion]="40" [loop]="false" [hideArrows]="true" [hideIndicators]="true"
+    [useKeyboard]="true" [useMouseWheel]="false" orientation="ltr">
+
+    <mat-carousel-slide class="slide" *ngFor="let slide of slides; let i = index" [image]="slide.imageUrl"
+      [hideOverlay]="true">
+    </mat-carousel-slide>
+  </mat-carousel>
+
+  <div class="slider__overlay--fixed">
+    <section class="slide__overlay">
+      <h1>{{ currentCaption }}</h1>
+    </section>
+
+    <button *ngFor="let slide of slides; let i = index;"
+      [class]="'slider__controls__button slider__controls__button--' + slide.buttonColorClass" (click)="slideTo(i)">
+      <div class=" slider__controls__button__icon-wrapper">
+        <mat-icon>{{ slide.buttonIcon }}</mat-icon>
+      </div>
+      <span class="slider__controls__button__label">
+        {{ slide.buttonLabel }}
+      </span>
+    </button>
+  </div>
+</div>
