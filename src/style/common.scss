@@ -1,0 +1,12 @@
+@import './variables';
+
+.button {
+  width: $button-min-width;
+  height: $button-height;
+  padding: $button-padding;
+
+  background-color: $color-yellow;
+  border: none;
+  transition: $transition-slow;
+  border-radius: 0;
+}

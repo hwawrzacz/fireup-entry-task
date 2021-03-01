@@ -2,10 +2,6 @@
 $breakpoint-tablet: 960px;
 $breakpoint-smartphone: 768px;
 
-// SIZES
-$mat-icon-initial-size: 24px;
-$mat-icon-initial-font-size: 24px;
-
 // SPACINGS
 $spacing-tiny: 2px;
 $spacing-small: 4px;
@@ -13,6 +9,13 @@ $spacing-regular: 8px;
 $spacing-medium: 16px;
 $spacing-big: 32px;
 $spacing-huge: 64px;
+
+// SIZES
+$mat-icon-initial-size: 24px;
+$mat-icon-initial-font-size: 24px;
+$button-height: 32px;
+$button-min-width: 64px;
+$button-padding: $spacing-regular;
 
 // COLORS
 $background-color-lvl-0: #dedede;

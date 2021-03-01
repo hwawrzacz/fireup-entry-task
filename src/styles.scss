@@ -34,6 +34,7 @@ $fireup-entry-task-theme: mat-light-theme((
 @include angular-material-theme($fireup-entry-task-theme);
 
 @import './style/variables';
+@import './style/common';
 body {
   font-family: Arial, sans-serif;
 }
