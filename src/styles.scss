@@ -1,3 +1,8 @@
+@import './style/variables';
+body {
+  font-family: Arial, sans-serif;
+}
+
 // CLEANING
 * {
   box-sizing: border-box;
@@ -8,4 +13,12 @@
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.text--light {
+  color: $text-color-light;
+}
+
+.text--dark {
+  color: $text-color-dark;
 }

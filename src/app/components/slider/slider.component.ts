@@ -14,7 +14,7 @@ export class SliderComponent implements OnInit {
     {
       imageUrl: 'assets/images/slides/tech_guy.jpg',
       caption: `${this.COMMON_CAPTION} Typography`,
-      captionColorClass: 'light-text',
+      captionColorClass: 'text--light',
       buttonLabel: 'Typography',
       buttonIcon: 'text_fields',
       buttonColorClass: 'red'
@@ -22,10 +22,10 @@ export class SliderComponent implements OnInit {
     {
       imageUrl: 'assets/images/slides/sea.jpg',
       caption: `${this.COMMON_CAPTION} RWD`,
-      captionColorClass: 'dark-text',
+      captionColorClass: 'text--dark',
       buttonLabel: 'Responsive Web Design',
       buttonIcon: 'auto_fix_high',
-      buttonColorClass: 'green'
+      buttonColorClass: 'lagoon'
     },
     {
       imageUrl: 'assets/images/slides/forest.jpg',
@@ -33,7 +33,7 @@ export class SliderComponent implements OnInit {
       captionColorClass: 'dark-text',
       buttonLabel: 'UX Design',
       buttonIcon: 'volunteer_activism',
-      buttonColorClass: 'lagoon'
+      buttonColorClass: 'green'
     },
   ];
   private _currentSlide = this._slides[0];
@@ -44,6 +44,10 @@ export class SliderComponent implements OnInit {
 
   get currentCaption(): string {
     return this._currentSlide.caption;
+  }
+
+  get currentCaptionColorClass(): string {
+    return this._currentSlide.captionColorClass;
   }
 
   constructor() { }
