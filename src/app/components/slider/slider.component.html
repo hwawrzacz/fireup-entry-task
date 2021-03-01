@@ -14,7 +14,8 @@
 
     <div class="slider__controls">
       <button *ngFor="let slide of slides; let i = index;"
-        [class]="'slider__controls__button slider__controls__button--' + slide.buttonColorClass" (click)="slideTo(i)">
+        class="slider__controls__button slider__controls__button--{{ slide.buttonColorClass }}" [ngClass]="{
+          'active' : currentSlideIndex === i }" (click)="slideTo(i)">
         <div class=" slider__controls__button__icon-wrapper">
           <mat-icon>{{ slide.buttonIcon }}</mat-icon>
         </div>

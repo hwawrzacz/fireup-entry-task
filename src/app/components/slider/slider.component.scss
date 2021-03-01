@@ -55,7 +55,12 @@
       align-items: center;
       background-color: transparent;
       border: none;
+      opacity: .8;
       cursor: pointer;
+
+      &.active {
+        opacity: 1;
+      }
       
       &__icon-wrapper {
         padding: $spacing-regular;
