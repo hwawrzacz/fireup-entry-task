@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatCarouselComponent } from '@ngbmodule/material-carousel';
 import { CarouselSlide } from 'src/app/model/carousel-slide';
+import { SliderInfoDialogComponent } from '../slider-info-dialog/slider-info-dialog.component';
 
 @Component({
   selector: 'app-slider',
@@ -55,7 +56,7 @@ export class SliderComponent implements OnInit {
   }
 
   get currentSlideIndex(): number {
-    return this._slider.currentIndex;
+    return this._slider ? this._slider.currentIndex : 0;
   }
 
   constructor(private _dialogService: MatDialog) {
@@ -77,11 +78,21 @@ export class SliderComponent implements OnInit {
   private openSlideDialog(): void {
     const now = Date.now();
     const timeFromLastSlide = ((now - this._lastSlideTime) / 1000);
-    this._lastSlideTime = now
-    console.log(`Last slide happened ${timeFromLastSlide} second${timeFromLastSlide > 1 ? 's' : ''} ago`);
+    this._lastSlideTime = now;
+
+    this._dialogService.open(SliderInfoDialogComponent, {
+      data: timeFromLastSlide
+    })
+      .afterClosed()
+      .subscribe();
   }
 
   public slideTo(index: number): void {
     this._slider.slideTo(index);
+  }
+
+  public isActive(index: number): boolean {
+    console.log(index);
+    return this.currentSlideIndex === index;
   }
 }
