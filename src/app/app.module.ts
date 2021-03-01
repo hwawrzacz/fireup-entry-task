@@ -8,21 +8,28 @@ import { MenuComponent } from './components/menu/menu.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { MatCarouselModule } from '@ngbmodule/material-carousel';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SliderInfoDialogComponent } from './components/slider-info-dialog/slider-info-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    SliderComponent
+    SliderComponent,
+    SliderInfoDialogComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MatCarouselModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatDialogModule,
   ],
   providers: [],
+  entryComponents: [SliderInfoDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

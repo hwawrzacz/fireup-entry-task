@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatCarouselComponent } from '@ngbmodule/material-carousel';
 import { CarouselSlide } from 'src/app/model/carousel-slide';
+import { SliderInfoDialogComponent } from '../slider-info-dialog/slider-info-dialog.component';
 
 @Component({
   selector: 'app-slider',
@@ -37,6 +39,9 @@ export class SliderComponent implements OnInit {
     },
   ];
   private _currentSlide = this._slides[0];
+  private readonly SLIDE_DIALOG_INTERVAL = 4;
+  private _slideChanges = 0;
+  private _lastSlideTime: number;
 
   get slides(): CarouselSlide[] {
     return this._slides;
@@ -50,14 +55,44 @@ export class SliderComponent implements OnInit {
     return this._currentSlide.captionColorClass;
   }
 
-  constructor() { }
+  get currentSlideIndex(): number {
+    return this._slider ? this._slider.currentIndex : 0;
+  }
 
+  constructor(private _dialogService: MatDialog) {
+    this._lastSlideTime = Date.now();
+  }
 
   ngOnInit(): void { }
 
-  public slideTo(index: number): void {
-    this._slider.slideTo(index);
-    this._currentSlide = this.slides[index];
+  public onSlideChange(index: number): void {
+    this._slideChanges++;
+    this._currentSlide = this._slides[index];
+
+    if (this._slideChanges % this.SLIDE_DIALOG_INTERVAL === 0) {
+      this.openSlideDialog();
+      this._slideChanges = 0;
+    }
   }
 
+  private openSlideDialog(): void {
+    const now = Date.now();
+    const timeFromLastSlide = ((now - this._lastSlideTime) / 1000);
+    this._lastSlideTime = now;
+
+    this._dialogService.open(SliderInfoDialogComponent, {
+      data: timeFromLastSlide
+    })
+      .afterClosed()
+      .subscribe();
+  }
+
+  public slideTo(index: number): void {
+    this._slider.slideTo(index);
+  }
+
+  public isActive(index: number): boolean {
+    console.log(index);
+    return this.currentSlideIndex === index;
+  }
 }
