@@ -1,5 +1,6 @@
 @import './variables';
 
+// COMPONENTS
 @mixin menu-item-hover-active-background($color, $transition) {
   $accent-line-height: $spacing-small;
 
@@ -34,4 +35,32 @@
       background-color: $color-gray;
     }
   }
+}
+
+@mixin button {
+  width: $button-min-width;
+  height: $button-height;
+  padding: $button-padding;
+
+  border: 0px solid transparent;
+  transition: $transition-fast;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+// COLOR
+@mixin button-color($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+
+  &.active {
+    background-color: white;
+    border: 2px solid $bg-color !important;
+    color: $bg-color;
+    font-weight: bold;
+  }
+}
+
+@mixin border-color($color) {
+  border-color: $color;
 }

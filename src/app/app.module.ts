@@ -17,7 +17,7 @@ import { HomePageModule } from './pages/home-page/home-page/home-page.module';
     AppComponent,
     MenuComponent,
     SliderComponent,
-    SliderInfoDialogComponent
+    SliderInfoDialogComponent,
   ],
   imports: [
     BrowserModule,

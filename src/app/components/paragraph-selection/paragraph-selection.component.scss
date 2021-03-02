@@ -1,0 +1,247 @@
+@import '../../../style/mixins.scss';
+@import '../../../style/variables.scss';
+
+$button-width: calc(3 * #{$button-min-width});
+$button-height: calc(2.5 * #{$button-height});
+$border-width: 2px;
+$container-padding: calc(#{$button-height} + #{$spacing-medium});
+
+.container {
+  padding: $container-padding 0;
+  background-color: $background-color-lvl-1;
+}
+
+.paragraph-wrapper {
+  position: relative;
+  z-index: 100;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.paragraph {
+  position: relative;
+  padding: $button-padding calc(2 * #{$button-padding});
+  
+  background-color: white;
+  border: 2px solid transparent;
+  background-image: url('/assets/images/paragraph_pattern.png');
+  background-position: bottom;
+  background-size: cover;
+
+  h1 {
+    font-weight: normal;
+  }
+
+  &__content {
+    color: $text-color-dark;
+  }
+  
+  &--red {
+    border-color: $color-red;
+    color: $color-red;
+  }
+  
+  &--green {
+    border-color: $color-green;
+    color: $color-green;
+  }
+  
+  &--lagoon {
+    border-color: $color-lagoon;
+    color: $color-lagoon;
+  }
+  
+  &--yellow {
+    border-color: $color-yellow;
+    color: $color-yellow;
+  }
+
+  &__button {
+    @include button;
+
+    position: absolute;
+    width: $button-width;
+    height: $button-height;
+
+    font-size: 2em;
+    outline: none;
+
+    &.active {
+      &:after {
+        z-index: 100;
+      }
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: white;
+      width: calc(2 * #{$button-padding});
+      height: calc(4 * #{$button-padding});
+    }
+
+    &:nth-child(1) {
+      top: calc(-1 * #{$button-height} + 4 * #{$button-padding});
+      left: calc(-1 * #{$button-width} + 2 * #{$button-padding});
+      
+      &:after {
+        bottom: 0; 
+        right: 0;
+      }
+    }
+
+    &:nth-child(2) {
+      top: calc(-1 * #{$button-height} + 4 * #{$button-padding});
+      right: calc(-1 * #{$button-width} + 2 * #{$button-padding});
+      
+      &:after {
+        bottom: 0;
+        left: 0;
+      }
+    }
+
+    &:nth-child(3) {
+      bottom: calc(-1 * #{$button-height} + 4 * #{$button-padding});
+      left: calc(-1 * #{$button-width} + 2 * #{$button-padding});
+      
+      &:after {
+        top: 0;
+        right: 0;
+      }
+    }
+
+    &:nth-child(4) {
+      bottom: calc(-1 * #{$button-height} + 4 * #{$button-padding});
+      right: calc(-1 * #{$button-width} + 2 * #{$button-padding});
+      
+      &:after {
+        top: 0;
+        left: 0;
+      }
+    }
+
+    .label--short {
+      display: none;
+    }
+  }
+}
+
+// TABLET
+@media (max-width: $breakpoint-tablet) {
+  .paragraph {
+    &__button {
+
+      &:after {
+        width: 100%;
+        height: 4px;
+      }
+
+      &:nth-child(1) {
+        top: calc(-1 * #{$button-height});
+        left: 0;
+        
+        &:after {
+          bottom: -4px; 
+          left: 0;
+        }
+      }
+
+      &:nth-child(2) {
+        top: calc(-1 * #{$button-height});
+        right: 0;
+        
+        &:after {
+          bottom: -4px; 
+          left: 0;
+        }
+      }
+
+      &:nth-child(3) {
+        bottom: calc(-1 * #{$button-height});
+        left: 0;
+        
+        &:after {
+          top: -4px;
+          right: 0;
+        }
+      }
+
+      &:nth-child(4) {
+        bottom: calc(-1 * #{$button-height});
+        right: 0;
+        
+        &:after {
+          top: -4px;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+// SMARTPHONE
+@media (max-width: $breakpoint-smartphone) {
+  .container {  
+    padding-top: $spacing-regular;
+    padding-left: $spacing-regular;
+    padding-right: $spacing-regular;
+  }
+
+  .paragraph-wrapper {
+    width: 100%;
+  }
+
+  .paragraph {
+    &__button {
+      width: $button-height;
+      top: 100%;
+      width: 25%;
+
+      &:nth-child(1) {
+        top: 100%;
+        left: 0;
+        
+        &:after {
+          top: -4px;
+          left: 0;
+        }
+      }
+
+      &:nth-child(2) {
+        top: 100%;
+        left: 25%;
+        
+        &:after {
+          top: -4px; 
+          left: 0;
+        }
+      }
+
+      &:nth-child(3) {
+        left: 50%;
+        
+        &:after {
+          top: -4px;
+          right: 0;
+        }
+      }
+
+      &:nth-child(4) {
+        left: 75%;
+        
+        &:after {
+          top: -4px;
+          left: 0;
+        }
+      }
+
+      .label--long {
+        display: none;
+      }
+
+      .label--short {
+        display: initial;
+      }
+    }
+  }
+}
