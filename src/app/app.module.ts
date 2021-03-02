@@ -10,6 +10,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { SliderInfoDialogComponent } from './components/slider-info-dialog/slider-info-dialog.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { HomePageModule } from './pages/home-page/home-page/home-page.module';
+import { CardsSectionComponent } from './components/cards-section/cards-section.component';
+import { CardComponent } from './components/card/card.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { HomePageModule } from './pages/home-page/home-page/home-page.module';
     MenuComponent,
     SliderComponent,
     SliderInfoDialogComponent,
+    CardsSectionComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
