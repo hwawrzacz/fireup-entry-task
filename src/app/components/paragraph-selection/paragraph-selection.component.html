@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="paragraph-wrapper">
+    <div class="buttons-wrapper">
+      <button *ngFor="let paragraph of paragraphs; let i = index" (click)="selectParagraph(i)"
+        class="paragraph__button button--{{ paragraph?.colorClass }}"
+        [ngClass]="{ 'active': currentParagraphIndex === i }">
+
+        <span class="label--long">{{ paragraph?.buttonLabel }}</span>
+        <span class="label--short">{{ paragraph?.mobileButtonLabel }}</span>
+      </button>
+    </div>
+
+    <section class="paragraph paragraph--{{ currentParagraph?.colorClass }}">
+      <h1>{{ currentParagraph?.title }}</h1>
+
+      <p class="paragraph__content">
+        {{ currentParagraph?.content }}
+      </p>
+    </section>
+  </div>
+</div>

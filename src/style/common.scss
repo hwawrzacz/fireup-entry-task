@@ -1,12 +1,22 @@
+@import './mixins';
 @import './variables';
 
 .button {
-  width: $button-min-width;
-  height: $button-height;
-  padding: $button-padding;
+ @include button;
 
-  background-color: $color-yellow;
-  border: none;
-  transition: $transition-slow;
-  border-radius: 0;
+  &--red {
+    @include button-color($color-red, $text-color-light);
+  }
+
+  &--green {
+    @include button-color($color-green, $text-color-light);
+  }
+
+  &--yellow {
+    @include button-color($color-yellow, $text-color-light);
+  }
+
+  &--lagoon {
+    @include button-color($color-lagoon, $text-color-light);
+  }
 }
