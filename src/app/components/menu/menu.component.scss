@@ -3,7 +3,6 @@
 @import './toggle-button';
 
 .menu {
-  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -65,13 +64,13 @@
     position: relative;
 
     &__toggle-button {
-      z-index: 10;
       @include menu-burger-button; 
     }
 
     // MENU LIST
     &__items {
       position: absolute;
+      z-index: 100;
       top: 100%;
       right: 0;
       width: 100%;
@@ -79,6 +78,8 @@
       max-height: 0;
       overflow: hidden;
       transition: $transition-slow;
+      box-shadow: 0 10px 10px -8px #333;
+
 
       &.open {
         max-height: 250px;
