@@ -13,7 +13,7 @@ $container-padding: calc(#{$button-height} + #{$spacing-medium});
 
 .paragraph-wrapper {
   position: relative;
-  z-index: 100;
+  z-index: 10;
   width: 50%;
   margin: 0 auto;
 }
@@ -68,7 +68,7 @@ $container-padding: calc(#{$button-height} + #{$spacing-medium});
 
     &.active {
       &:after {
-        z-index: 100;
+        z-index: 10;
       }
     }
 
