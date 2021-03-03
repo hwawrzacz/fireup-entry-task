@@ -1,1 +1,9 @@
-<p>list works!</p>
+<h1>
+  <mat-icon>border_color</mat-icon> {{ title }}
+</h1>
+<ul>
+  <li *ngFor="let item of items; let i = index;">
+    <span class="index"> {{ i+1 }} </span>
+    <span class="content"> {{ item }} </span>
+  </li>
+</ul>
