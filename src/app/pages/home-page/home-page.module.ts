@@ -5,6 +5,7 @@ import { ParagraphSelectionComponent } from 'src/app/components/paragraph-select
 import { CardsSectionComponent } from 'src/app/components/cards-section/cards-section.component';
 import { CardComponent } from 'src/app/components/card/card.component';
 import { OverlayImageComponent } from 'src/app/components/overlay-image/overlay-image.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { OverlayImageComponent } from 'src/app/components/overlay-image/overlay-
     OverlayImageComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule,
   ],
   exports: [HomePageComponent],
 })

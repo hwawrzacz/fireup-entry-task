@@ -1,6 +1,6 @@
 @import '../../../style/variables';
 
-.image {
+.overlay-image {
   $overlay-hover-width: calc(1.5 * #{$spacing-huge}); 
   $overlay-hover-height: calc(2 * #{$spacing-huge}); 
   $overlay-offset-vertical: calc(100% - #{$overlay-hover-height});
@@ -31,7 +31,7 @@
   }
   
   &:hover {
-    .image__overlay {
+    .overlay-image__overlay {
       &--left {
         clip-path: polygon( 0 $overlay-offset-vertical, 
                             $overlay-hover-width $overlay-offset-vertical,
@@ -45,5 +45,31 @@
                             $overlay-offset-horizontal 100%);
       }
     }
+  }
+
+  button {
+    position: absolute;
+    bottom: $spacing-medium;
+    background-color: transparent;
+    border: none;
+    
+    &.left {
+      left: $spacing-medium;
+      transform: rotate(180deg) translateX(calc(-2 * #{$mat-icon-initial-size}));
+    }
+
+    &.right {
+      right: $spacing-medium;
+      transform: translateX(calc(-2 * #{$mat-icon-initial-size}));
+    }
+
+    mat-icon {
+      font-size: calc(3 * #{$mat-icon-initial-font-size});
+      height: calc(3 * #{$mat-icon-initial-size});
+
+      &:nth-child(2) {
+        margin-left: calc(-2 * #{$mat-icon-initial-font-size});
+      }
+    } 
   }
 }
