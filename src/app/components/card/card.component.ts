@@ -1,48 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Card } from 'src/app/model/card';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent implements OnInit {
-  private _imageUrl: string = '';
-  private _imageAltText: string = '';
-  private _caption: string = '';
-  private _imageStyle: 'circle' | 'polygon' = 'circle';
+  private _card!: Card;
 
-  @Input('imageUrl')
-  set imageUrl(value: string) {
-    this._imageUrl = value
+  @Input('card')
+  set card(value: Card) {
+    this._card = value
   }
-  get imageUrl(): string {
-    return this._imageUrl;
+  get card(): Card {
+    return this._card;
   }
-
-  @Input('imageAltText')
-  set imageAltText(value: string) {
-    this._imageAltText = value;
-  }
-  get imageAltText(): string {
-    return this._imageAltText;
-  }
-
-  @Input('imageStyle')
-  set imageStyle(value: 'circle' | 'polygon') {
-    this._imageStyle = value;
-  }
-  get imageStyle(): 'circle' | 'polygon' {
-    return this._imageStyle;
-  }
-
-  @Input('caption')
-  set caption(value: string) {
-    this._caption = value;
-  }
-  get caption(): string {
-    return this._caption;
-  }
-
 
   constructor() { }
 
