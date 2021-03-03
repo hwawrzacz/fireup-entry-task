@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { SliderInfoDialogComponent } from './components/slider-info-dialog/slider-info-dialog.component';
 import { SliderComponent } from './components/slider/slider.component';
-import { HomePageModule } from './pages/home-page/home-page/home-page.module';
+import { HomePageModule } from './pages/home-page/home-page.module';
 
 
 @NgModule({

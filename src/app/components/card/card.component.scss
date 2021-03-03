@@ -1,0 +1,165 @@
+@import '../../../style/variables';
+
+.card {
+  position: relative;
+  flex: 1 1;
+
+  margin-top: $spacing-big;
+  height: 300px;
+
+  background-color: $background-color-lvl-1;
+
+  // ACCENT BAR
+  &:after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    width: 100%;
+    height: 8px;
+    background-color: red;
+  }
+
+  &--red {
+    color: $color-red;
+
+    &:after {
+      background-color: $color-red;
+    }
+  }
+
+  &--green {
+    color: $color-green;
+
+    &:after {
+      background-color: $color-green;
+    }
+  }
+
+  &--yellow {
+    color: $color-yellow;
+
+    &:after {
+      background-color: $color-yellow;
+    }
+  }
+
+  &--lagoon {
+    color: $color-lagoon;
+
+    &:after {
+      background-color: $color-lagoon;
+    }
+  }
+  
+  .figure-wrapper {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    overflow: hidden;
+    
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+  }
+
+  figure {
+    $cutout-size: 30px;
+    $static-distance: calc(100% - #{$cutout-size});
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    
+    
+    img {
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+
+      &.polygon {
+        clip-path: polygon($cutout-size 0, $static-distance 0, 100% $cutout-size, 100% $static-distance, $static-distance 100%, $cutout-size 100%, 0 $static-distance, 0 $cutout-size);
+      }
+      
+      &.circle {
+        clip-path: circle(25% at 50% 30%);
+      }
+    }
+
+    caption {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      transform: translateX(-50%);
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 1.8em;
+      
+      span {
+        display: inline-block;
+        margin: $spacing-small 0;
+        background-color: rgba($background-color-lvl-1, .8);
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .card {
+    margin-top: $spacing-big;
+    height: 200px;
+
+    figure {
+      flex-direction: row;
+
+      img {
+        object-position: top;
+
+        &.polygon {
+          width: 100%;
+        }
+
+        &.circle {
+          clip-path: circle(40% at 50% 50%);
+          object-position: 50% 50%;
+        }
+      }
+
+      caption {
+        right: 0;
+        top: 50%;
+        transform: translateX(0) translateY(-50%);
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-smartphone) {
+  .card {
+    margin-top: $spacing-big;
+    padding-top: 100%;
+
+    figure {
+      img {
+        width: 100%;
+
+        &.circle {
+          clip-path: circle(50% at 50% 50%);
+        }
+      }
+
+      caption {
+        font-size: 1.5em;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+  }
+}
