@@ -41,7 +41,7 @@ export class SliderComponent implements OnInit {
   private _currentSlide = this._slides[0];
   private readonly SLIDE_DIALOG_INTERVAL = 4;
   private _slideChanges = 0;
-  private _lastSlideTime: number;
+  private _lastSlideTime?: number;
 
   get slides(): CarouselSlide[] {
     return this._slides;
@@ -60,7 +60,6 @@ export class SliderComponent implements OnInit {
   }
 
   constructor(private _dialogService: MatDialog) {
-    this._lastSlideTime = Date.now();
   }
 
   ngOnInit(): void { }
@@ -77,7 +76,8 @@ export class SliderComponent implements OnInit {
 
   private openSlideDialog(): void {
     const now = Date.now();
-    const timeFromLastSlide = ((now - this._lastSlideTime) / 1000);
+    const timeFromLastSlide =
+      !!this._lastSlideTime ? ((now - this._lastSlideTime) / 1000) : 0;
     this._lastSlideTime = now;
 
     this._dialogService.open(SliderInfoDialogComponent, {
