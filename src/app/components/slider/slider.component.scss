@@ -17,6 +17,8 @@
   position: relative;
 
   &__overlay {
+    padding: $spacing-big $spacing-huge;
+
     position: absolute;
     z-index: 10;
     top: 0;
@@ -27,9 +29,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-
-    padding: $spacing-big; 
+    align-items: center; 
 
     h1 {
       text-align: center;
@@ -97,6 +97,9 @@
 // Tablet
 @media (max-width: $breakpoint-tablet) {  
   .slider {
+    &__overlay {
+      padding: $spacing-big $spacing-medium;
+    }
     &__controls {
       &__button {
         flex-direction: column;

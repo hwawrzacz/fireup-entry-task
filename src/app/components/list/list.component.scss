@@ -1,0 +1,70 @@
+@import '../../../style/variables';
+
+h1 {
+  padding: $spacing-regular;
+  font-weight: normal;
+  letter-spacing: $spacing-regular;
+  font-style: italic;
+  font-size: 2.5em;
+  background-color: $color-blue;
+}
+
+ul {
+  list-style: none;
+  background-color: $background-color-lvl-2;
+  padding: $spacing-big $spacing-medium;
+
+  li {
+    display: flex;
+    margin-bottom: $spacing-big;
+
+    .index {
+      font-weight: bold;
+      width: $spacing-huge;
+      font-size: 2em;
+      border-bottom: $spacing-regular solid $color-lagoon;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+    }
+
+    .content {
+      display: flex;
+      align-items: flex-end;
+      flex: 1 1;
+      margin-left: $spacing-medium;
+      font-size: .9em;
+      
+    }
+  }
+}
+
+@media (max-width: $breakpoint-smartphone) {
+  ul {
+    list-style: none;
+    background-color: $background-color-lvl-2;
+    padding: $spacing-big $spacing-medium;
+  
+    li {
+      display: flex;
+      margin-bottom: $spacing-regular;
+  
+      .index {
+        font-weight: normal;
+        width: auto;
+        font-size: initial;
+        border-bottom: none;
+  
+        display: inline;
+      }
+    }
+  }
+}

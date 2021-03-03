@@ -2,11 +2,18 @@
 @import '../../../style/mixins';
 @import './toggle-button';
 
+.menu-container{
+  padding: 0 $spacing-huge;
+  background-color: $background-color-lvl-2;
+}
+
 .menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $background-color-lvl-2;
+  max-width: $max-width;
+  background-color: inherit;
+  margin: 0 auto;
 
   // TOGGLE BUTTON
   &__toggle-button {
@@ -57,9 +64,12 @@
 //====================================================
 //====================== MOBILE ======================
 //====================================================
-// TABLET MOBILE
+// TABLET
 @media (max-width: $breakpoint-tablet) {
   // MENU
+  .menu-container{
+    padding: 0 $spacing-medium;
+  }
   .menu {
     position: relative;
 
@@ -74,8 +84,9 @@
       top: 100%;
       right: 0;
       width: 100%;
-      flex-direction: column;
       max-height: 0;
+      
+      flex-direction: column;
       overflow: hidden;
       transition: $transition-slow;
       box-shadow: 0 10px 10px -8px #333;

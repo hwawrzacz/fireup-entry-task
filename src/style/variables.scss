@@ -1,6 +1,8 @@
 // MOBILE BREAKPOINTS
-$breakpoint-tablet: 960px;
-$breakpoint-smartphone: 768px;
+$breakpoint-tablet: 993px;
+$breakpoint-smartphone: 601px;
+
+$max-width: 1280px;
 
 // SPACINGS
 $spacing-tiny: 2px;
@@ -25,9 +27,13 @@ $color-primary: gold;
 $color-secondary: khaki;
 
 $color-yellow: #DFBB42;
+$color-orange: #FAAD81;
 $color-red: #C43434;
 $color-green: #508B61;
 $color-lagoon: #428D9E;
+$color-blue: #7EC8EA;
+$color-pink: #E5B6E7;
+$color-indigo: #575FBD;
 
 $color-gray: #B0B0B0;
 $text-color-light: #fafafa;

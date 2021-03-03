@@ -1,0 +1,19 @@
+@import '../../../style/variables';
+
+.container-w-background {
+  background-image: url('/assets/images/background.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0 $spacing-huge;
+
+  * {
+    margin-top: $spacing-big;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .container-w-background {
+    padding: 0 $spacing-medium;
+  }
+}

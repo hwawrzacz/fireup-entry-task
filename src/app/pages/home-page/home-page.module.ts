@@ -6,6 +6,7 @@ import { CardsSectionComponent } from 'src/app/components/cards-section/cards-se
 import { CardComponent } from 'src/app/components/card/card.component';
 import { OverlayImageComponent } from 'src/app/components/overlay-image/overlay-image.component';
 import { MatIconModule } from '@angular/material/icon';
+import { ListComponent } from 'src/app/components/list/list.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
     CardsSectionComponent,
     CardComponent,
     OverlayImageComponent,
+    ListComponent,
   ],
   imports: [
     CommonModule,
