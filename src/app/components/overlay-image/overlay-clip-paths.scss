@@ -1,0 +1,63 @@
+
+@import '../../../style/variables';
+
+$overlay-hover-width: calc(1.5 * #{$spacing-huge}); 
+$overlay-hover-height: calc(2 * #{$spacing-huge}); 
+$overlay-offset-vertical: calc(100% - #{$overlay-hover-height});
+$overlay-offset-horizontal: calc(100% - #{$overlay-hover-width});
+
+// TRIANGLES
+@mixin clip-path-triangle-r-t {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 50%);
+}
+
+@mixin clip-path-triangle-l-t {
+  clip-path: polygon(0 0, 100% 0, 50% 50%, 0 100%);
+}
+
+@mixin clip-path-triangle-r-b { 
+  clip-path: polygon(50% 50%, 100% 0, 100% 100%, 0 100%);
+}
+
+@mixin clip-path-triangle-l-b { 
+  clip-path: polygon(0 0, 50% 50%, 100% 100%, 0 100%);
+}
+
+@mixin clip-path-triangle-half-l-t { 
+  clip-path: polygon(0 50%, 50% 75%, 100% 100%, 0 100%);
+}
+
+@mixin clip-path-triangle-half-l-b { 
+  clip-path: polygon(0 0, 100% 0, 50% 25%, 0 50%);
+}
+
+
+
+// SQUARES
+@mixin clip-path-square-l-b {
+  clip-path: polygon( 0 $overlay-offset-vertical, 
+                      $overlay-hover-width $overlay-offset-vertical,
+                      $overlay-hover-width 100%,
+                      0 100%);
+}
+
+@mixin clip-path-square-r-b {
+  clip-path: polygon( $overlay-offset-horizontal $overlay-offset-vertical,
+                      100% $overlay-offset-vertical, 
+                      100% 100%, 
+                      $overlay-offset-horizontal 100%);
+}
+
+@mixin clip-path-square-l-t {
+  clip-path: polygon( 0 0, 
+                      $overlay-hover-width 0,
+                      $overlay-hover-width $overlay-hover-height,
+                      0 $overlay-hover-height);
+}
+
+@mixin clip-path-square-r-t {
+  clip-path: polygon( $overlay-offset-horizontal 0,
+                      100% 0, 
+                      100% $overlay-hover-height, 
+                      $overlay-offset-horizontal $overlay-hover-height);
+}
