@@ -19,11 +19,11 @@
     background-color: red;
   }
 
-  &--red {
-    color: $color-red;
+  &--pink {
+    color: $color-pink;
 
     &:after {
-      background-color: $color-red;
+      background-color: $color-pink;
     }
   }
 
@@ -35,19 +35,19 @@
     }
   }
 
-  &--yellow {
-    color: $color-yellow;
+  &--indigo {
+    color: $color-indigo;
 
     &:after {
-      background-color: $color-yellow;
+      background-color: $color-indigo;
     }
   }
 
-  &--lagoon {
-    color: $color-lagoon;
+  &--orange {
+    color: $color-orange;
 
     &:after {
-      background-color: $color-lagoon;
+      background-color: $color-orange;
     }
   }
   
