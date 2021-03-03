@@ -1,0 +1,49 @@
+@import '../../../style/variables';
+
+.image {
+  $overlay-hover-width: calc(1.5 * #{$spacing-huge}); 
+  $overlay-hover-height: calc(2 * #{$spacing-huge}); 
+  $overlay-offset-vertical: calc(100% - #{$overlay-hover-height});
+  $overlay-offset-horizontal: calc(100% - #{$overlay-hover-width});
+
+  position: relative;
+  width: 300px;
+  height: 450px;
+  background-color: red;
+  transition: $transition-normal;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($background-color-lvl-2, .8);
+    transition: inherit;
+    
+    &--left {
+      clip-path: polygon(0 0, 50% 50%, 100% 100%, 0 100%);
+    }
+    
+    &--right {
+      clip-path: polygon(50% 50%, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+  
+  &:hover {
+    .image__overlay {
+      &--left {
+        clip-path: polygon( 0 $overlay-offset-vertical, 
+                            $overlay-hover-width $overlay-offset-vertical,
+                            $overlay-hover-width 100%,
+                            0 100%);
+      }
+      &--right {
+        clip-path: polygon( $overlay-offset-horizontal $overlay-offset-vertical,
+                            100% $overlay-offset-vertical, 
+                            100% 100%, 
+                            $overlay-offset-horizontal 100%);
+      }
+    }
+  }
+}
