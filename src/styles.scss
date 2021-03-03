@@ -35,7 +35,7 @@ $fireup-entry-task-theme: mat-light-theme((
 
 @import './style/variables';
 @import './style/common';
-@import './style/materialize-grid';
+@import './style/materialize/_grid';
 
 body {
   font-family: Arial, sans-serif;
