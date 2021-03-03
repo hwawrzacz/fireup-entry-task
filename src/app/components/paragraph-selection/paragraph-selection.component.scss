@@ -6,7 +6,7 @@ $button-height: calc(2.5 * #{$button-height});
 $border-width: 2px;
 $container-padding: calc(#{$button-height} + #{$spacing-medium});
 
-.container {
+.paragraph-container {
   padding: $container-padding 0;
   background-color: $background-color-lvl-1;
 }
@@ -128,6 +128,14 @@ $container-padding: calc(#{$button-height} + #{$spacing-medium});
 
 // TABLET
 @media (max-width: $breakpoint-tablet) {
+  .paragraph-container {  
+    padding-left: $spacing-medium;
+    padding-right: $spacing-medium;
+  }
+  .paragraph-wrapper {
+    width: auto;
+  }
+
   .paragraph {
     &__button {
 
@@ -181,10 +189,8 @@ $container-padding: calc(#{$button-height} + #{$spacing-medium});
 
 // SMARTPHONE
 @media (max-width: $breakpoint-smartphone) {
-  .container {  
+  .paragraph-container {  
     padding-top: $spacing-regular;
-    padding-left: $spacing-regular;
-    padding-right: $spacing-regular;
   }
 
   .paragraph-wrapper {
