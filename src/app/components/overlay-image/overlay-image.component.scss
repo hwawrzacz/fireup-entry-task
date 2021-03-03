@@ -1,0 +1,148 @@
+@import '../../../style/variables';
+@import './overlay-clip-paths.scss';
+
+.overlay-image {
+  position: relative;
+  height: 450px;
+  background-color: red;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    filter: saturate(0);
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($background-color-lvl-2, .8);
+    transition: $transition-normal;
+    
+    &--left {
+      @include clip-path-triangle-l-b;
+    }
+    
+    &--right {
+      @include clip-path-triangle-r-b;
+    }
+  }
+  
+  &:hover {
+    .overlay-image__overlay {
+      &--left {
+        @include clip-path-square-l-b;
+      }
+      &--right {
+        @include clip-path-square-r-b;
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    bottom: $spacing-medium;
+    background-color: transparent;
+    border: none;
+    
+    &.left {
+      left: $spacing-medium;
+      transform: rotate(180deg) translateX(calc(-2 * #{$mat-icon-initial-size}));
+    }
+
+    &.right {
+      right: $spacing-medium;
+      transform: translateX(calc(-2 * #{$mat-icon-initial-size}));
+    }
+
+    mat-icon {
+      font-size: calc(3 * #{$mat-icon-initial-font-size});
+      height: calc(3 * #{$mat-icon-initial-size});
+
+      &:nth-child(2) {
+        margin-left: calc(-2 * #{$mat-icon-initial-font-size});
+      }
+    } 
+  }
+}
+
+
+
+// TABLET
+@media (max-width: $breakpoint-tablet) {
+  .overlay-image {  
+    &__overlay {
+      &--left {
+        @include clip-path-triangle-l-t;
+      }
+      
+      &--right {
+        @include clip-path-triangle-r-t;
+      }
+    }
+    
+    &:hover {
+      .overlay-image__overlay {
+        &--left {
+          @include clip-path-square-l-t;
+        }
+        &--right {
+          @include clip-path-square-r-t;
+        }
+      }
+    }
+    
+    button {
+      top: $spacing-medium;
+      bottom: initial;
+    }
+  }
+}
+
+
+
+// SMARTPHONE
+@media (max-width: $breakpoint-smartphone) {
+  .overlay-image {  
+    &__overlay {
+      &--left {
+        @include clip-path-triangle-half-l-b;
+      }
+      
+      &--right {
+        @include clip-path-triangle-half-l-t;
+      }
+    }
+    
+    &:hover {
+      .overlay-image__overlay {
+        &--left {
+          @include clip-path-square-l-t;
+        }
+        &--right {
+          @include clip-path-square-l-b;
+        }
+      }
+    }
+
+    button {
+      left: $spacing-medium;
+      
+      &.left {
+        top: $spacing-medium;
+        bottom: initial;
+        transform: rotate(180deg) translateX(calc(-2 * #{$mat-icon-initial-size}));
+      }
+  
+      &.right {
+        top: initial;
+        bottom: $spacing-medium;
+        transform: none;
+      }
+    }
+  }
+}
