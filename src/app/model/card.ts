@@ -3,4 +3,5 @@ export interface Card {
   imageAltText: string;
   caption?: string;
   imageStyle: 'circle' | 'polygon';
+  colorClass: string;
 }

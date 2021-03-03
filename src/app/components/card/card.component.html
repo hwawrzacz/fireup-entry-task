@@ -1,6 +1,8 @@
-<div class="card">
-  <figure class="{{ card?.imageStyle }}">
-    <img class=" card--image" src="{{ card?.imageUrl }}" alt="{{ card?.imageAltText }}" />
-    <caption> {{ card?.caption }}</caption>
-  </figure>
+<div class="card card--{{ card?.colorClass }}">
+  <div class="figure-wrapper">
+    <figure>
+      <img class="{{ card?.imageStyle }}" src="{{ card?.imageUrl }}" alt="{{ card?.imageAltText }}" />
+      <caption> <span *ngFor="let word of card?.caption?.split(' ')"> {{ word }} </span></caption>
+    </figure>
+  </div>
 </div>

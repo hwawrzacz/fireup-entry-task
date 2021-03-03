@@ -11,24 +11,28 @@ export class CardsSectionComponent implements OnInit {
     {
       imageUrl: 'assets/images/people/boy.jpg',
       imageAltText: 'Boy with a helmet',
-      imageStyle: 'polygon'
+      imageStyle: 'polygon',
+      colorClass: 'red'
     },
     {
       imageUrl: 'assets/images/people/girl.jpg',
       imageAltText: 'Girl rollerblading',
-      imageStyle: 'polygon'
+      imageStyle: 'polygon',
+      colorClass: 'lagoon',
     },
     {
       imageUrl: 'assets/images/people/woman.jpg',
       imageAltText: 'Woman walking',
       caption: 'Box caption',
       imageStyle: 'circle',
+      colorClass: 'green',
     },
     {
       imageUrl: 'assets/images/people/man.jpg',
       imageAltText: 'Man running',
       caption: 'Box caption',
       imageStyle: 'circle',
+      colorClass: 'yellow',
     },
   ];
 
