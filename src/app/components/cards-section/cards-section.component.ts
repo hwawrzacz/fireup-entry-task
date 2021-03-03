@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Card } from 'src/app/model/card';
 
 @Component({
   selector: 'app-cards-section',
@@ -6,6 +7,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cards-section.component.scss']
 })
 export class CardsSectionComponent implements OnInit {
+  private _cards: Card[] = [
+    {
+      imageUrl: 'assets/images/people/boy.jpg',
+      imageAltText: 'Boy with a helmet',
+      imageStyle: 'polygon'
+    },
+    {
+      imageUrl: 'assets/images/people/girl.jpg',
+      imageAltText: 'Girl rollerblading',
+      imageStyle: 'polygon'
+    },
+    {
+      imageUrl: 'assets/images/people/woman.jpg',
+      imageAltText: 'Woman walking',
+      caption: 'Box caption',
+      imageStyle: 'circle',
+    },
+    {
+      imageUrl: 'assets/images/people/man.jpg',
+      imageAltText: 'Man running',
+      caption: 'Box caption',
+      imageStyle: 'circle',
+    },
+  ];
+
+  get cards(): Card[] {
+    return this._cards;
+  }
 
   constructor() { }
 
