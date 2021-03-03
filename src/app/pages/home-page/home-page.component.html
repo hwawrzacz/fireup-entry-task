@@ -2,5 +2,5 @@
 
 <div class="container-w-background">
   <app-cards-section></app-cards-section>
-  <app-overlay-image></app-overlay-image>
+  <app-overlay-image *ngFor="let image of overlayImages" [overlayImage]="image"></app-overlay-image>
 </div>
