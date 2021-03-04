@@ -3,6 +3,8 @@
 
   <input matInput placeholder="City" (keyup)="emitCityNameChange($event)" />
 
+  <mat-progress-bar *ngIf="isLoading && !hasError" mode="indeterminate"></mat-progress-bar>
+
   <!-- Search results -->
   <section class="results">
     <!-- Loading indicator -->
@@ -13,30 +15,31 @@
       'success': !hasError
     }">{{ responseMessage }}</p>
 
-    <div *ngIf="!isLoading && !hasError" class="weather-data">
-      <h1>Gliwice</h1>
-      <h6 class="caption">Clouds, rain, clouds, more rain</h6>
+    <div *ngIf="!!weather && !isLoading && !hasError" class="weather-data">
+      <h1> {{ weather?.cityName }} </h1>
+      <h6 class="caption"> {{ weather?.description }}</h6>
 
-      <div class="row">
+      <div class="row align-top">
         <p class="col s6">
           <label for="temperature">Temperature</label>
-          <span class="temperature">&deg;C</span>
+          <span class="temperature">{{ weather?.temperature }} &deg;C</span>
         </p>
 
         <figure class="col s6">
-          <img src="" alt="" />
+          <label>Preview</label>
+          <img src="{{ weatherIconUrl }}" alt="{{ weather.title }}" />
         </figure>
       </div>
 
       <div class="row">
         <p class="col s6">
           <label for="pressure">Pressure</label>
-          <span class="pressure">hPa</span>
+          <span class="pressure">{{ weather?.pressure }} hPa</span>
         </p>
 
         <p class="col s6">
           <label for="humidity">Humidity</label>
-          <span class="humidity">%</span>
+          <span class="humidity">{{ weather?.humidity }}%</span>
         </p>
       </div>
     </div>
