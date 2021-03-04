@@ -1,6 +1,46 @@
-<p>weather-page-component works!</p>
 <!-- Search box -->
+<div class="weather-page-container">
 
-<!-- Message -->
+  <div class="input-wrapper">
+    <input matInput placeholder="City" />
+  </div>
 
-<!-- Search results -->
+  <!-- Search results -->
+  <section class="results">
+    <!-- Loading indicator -->
+    <mat-spinner *ngIf="true" mode="indeterminate"></mat-spinner>
+
+    <p *ngIf="true" [ngClass]="{
+    'error': true,
+    'success': false
+  }"></p>
+
+    <div *ngIf="true" class="weather-data">
+      <p>
+        <label for="city"></label>
+        <span #city></span>
+      </p>
+
+      <figure>
+        <img src="" alt="" />
+        <caption></caption>
+      </figure>
+
+      <p>
+        <label for="temperature"></label>
+        <span #temperature>&deg;C</span>
+      </p>
+
+      <p>
+        <label for="pressure"></label>
+        <span #pressure>hPa</span>
+      </p>
+
+      <p>
+        <label for="humidity"></label>
+        <span #humidity>%</span>
+      </p>
+    </div>
+
+  </section>
+</div>
