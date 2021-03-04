@@ -1,0 +1,9 @@
+{
+  "/weatherApi": {
+    "target": "http://api.openweathermap.org",
+    "secure": false,
+    "pathRewrite": {
+      "^/weatherApi": ""
+    }
+  }
+}
