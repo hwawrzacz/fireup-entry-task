@@ -1,6 +1,7 @@
 export interface WeatherAir {
   temp: number;
   pressure: number;
+  humidity: number;
 }
 
 export interface WeatherDescription {
@@ -10,7 +11,7 @@ export interface WeatherDescription {
 }
 
 export interface WeatherResponse {
-  weather: WeatherDescription;
+  weather: WeatherDescription[];
   main: WeatherAir;
   name: string
 }
@@ -18,6 +19,7 @@ export interface WeatherResponse {
 export class Weather {
   private _temperature: number;
   private _pressure: number;
+  private _humidity: number;
   private _title: string;
   private _description: string;
   private _icon: string;
@@ -29,6 +31,10 @@ export class Weather {
 
   get pressure(): number {
     return this._pressure;
+  }
+
+  get humidity(): number {
+    return this._humidity;
   }
 
   get title(): string {
@@ -49,12 +55,13 @@ export class Weather {
 
 
   constructor(weatherResponse: WeatherResponse) {
-    this._temperature = weatherResponse.main.temp;
+    this._temperature = Math.round(weatherResponse.main.temp);
     this._pressure = weatherResponse.main.pressure;
+    this._humidity = weatherResponse.main.humidity;
 
-    this._title = weatherResponse.weather.main;
-    this._description = weatherResponse.weather.description;
-    this._icon = weatherResponse.weather.icon;
+    this._title = weatherResponse.weather[0].main;
+    this._description = weatherResponse.weather[0].description;
+    this._icon = weatherResponse.weather[0].icon;
 
     this._cityName = weatherResponse.name;
   }

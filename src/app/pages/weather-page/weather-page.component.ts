@@ -1,8 +1,7 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { of } from 'rxjs/internal/observable/of';
-import { catchError, debounceTime, switchMap, tap } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime, filter, mergeMap, takeUntil, tap } from 'rxjs/operators';
+import { CommonResponse } from 'src/app/model/common-response';
 import { Weather, WeatherResponse } from 'src/app/model/weather';
 import { WeatherService } from 'src/app/services/weather.service';
 
@@ -11,13 +10,17 @@ import { WeatherService } from 'src/app/services/weather.service';
   templateUrl: './weather-page.component.html',
   styleUrls: ['./weather-page.component.scss']
 })
-export class WeatherPageComponent implements OnInit {
+export class WeatherPageComponent implements OnInit, OnDestroy {
   private _cityNameChange = new Subject<string>();
-  private _weatherData = new Subject<Weather>();
+  private _weather?: Weather;
+  private _destroyed = new Subject();
 
   private _loadingCounter = 0;
   private _error = false;
   private _responseMessage = '';
+
+  private readonly ICON_URL = 'http://openweathermap.org/img/wn/';
+  private readonly SEARCH_DELAY = 600;
 
   get isLoading(): boolean {
     return this._loadingCounter > 0;
@@ -31,6 +34,14 @@ export class WeatherPageComponent implements OnInit {
     return this._responseMessage;
   }
 
+  get weather(): Weather | undefined {
+    return this._weather;
+  }
+
+  get weatherIconUrl(): string {
+    return this._weather ? `${this.ICON_URL}/${this._weather?.icon}@2x.png` : '';
+  }
+
   constructor(private _weatherService: WeatherService) { }
 
   ngOnInit(): void {
@@ -40,11 +51,15 @@ export class WeatherPageComponent implements OnInit {
   private observeInputChanges() {
     this._cityNameChange
       .pipe(
-        debounceTime(400),
-        tap(() => this._loadingCounter++),
-        switchMap(cityName => this._weatherService.getWeatherData(cityName)),
-        tap(this.handleResponse),
-        catchError(this.handleError)
+        filter(name => !!name && name.trim().length > 0),
+        debounceTime(this.SEARCH_DELAY),
+        tap(() => {
+          ++this._loadingCounter;
+          this._error = false;
+        }),
+        mergeMap(cityName => this._weatherService.getWeatherData(cityName)),
+        tap(weather => this.handleResponse(weather)),
+        takeUntil(this._destroyed),
       )
       .subscribe()
   }
@@ -54,21 +69,28 @@ export class WeatherPageComponent implements OnInit {
     this._cityNameChange.next(name);
   }
 
-  private handleResponse(weatherResponse: WeatherResponse): void {
-    const weather = new Weather(weatherResponse);
-    this._weatherData.next(weather);
-
-    console.log(weatherResponse);
-    console.log(weather);
-
+  private handleResponse(res: CommonResponse<WeatherResponse>): void {
     this._loadingCounter--;
+    console.log(this._loadingCounter);
 
+    res.success
+      ? this.handleSuccess(res.payload)
+      : this.handleError(res.errorMessage)
   }
 
-  private handleError(error: HttpErrorResponse): Observable<any> {
-    this._responseMessage = `Couldn't download data. The following error occurred: ${error.message}`;
+  private handleSuccess(weatherResponse: WeatherResponse): void {
+    const weather = new Weather(weatherResponse);
+    this._weather = weather;
+    console.log(this._weather);
+  }
+
+  private handleError(errorMessage: string): void {
+    this._responseMessage = errorMessage;
     this._error = true;
-    return of();
   }
 
+  ngOnDestroy(): void {
+    this._destroyed.next();
+    this._destroyed.complete();
+  }
 }
