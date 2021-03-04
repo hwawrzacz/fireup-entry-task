@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,6 +11,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { SliderInfoDialogComponent } from './components/slider-info-dialog/slider-info-dialog.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { HomePageModule } from './pages/home-page/home-page.module';
+import { WeatherPageModule } from './pages/weather-page/weather-page.module';
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { HomePageModule } from './pages/home-page/home-page.module';
     SliderInfoDialogComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -27,6 +30,7 @@ import { HomePageModule } from './pages/home-page/home-page.module';
     MatIconModule,
     HomePageModule,
     MatDialogModule,
+    WeatherPageModule,
   ],
   providers: [],
   entryComponents: [SliderInfoDialogComponent],

@@ -1,0 +1,123 @@
+@import '../../../style/variables';
+
+.weather-page-container {
+  padding: $spacing-medium $spacing-huge;
+  $common-width: 450px;
+
+  input {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: $common-width;
+    padding: $spacing-regular;
+    border: 1px solid $text-color-dark;
+    font-size: 2em;
+    background-color: transparent;
+    
+    &::placeholder {
+      color: $color-gray;
+    }
+  }
+
+  mat-progress-bar {
+    margin-top: $spacing-regular;
+    max-height: 0;
+  }
+
+  .results {
+    margin-top: $spacing-big;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .weather-data {
+      width: $common-width;
+      padding: $spacing-medium;
+      background-color: white;
+      box-shadow: 0 5px 15px -5px $text-color-dark;
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      &.align-top {
+        align-items: flex-start;
+      }
+    }
+
+    h1 {
+      font-size: 3em;
+      font-weight: normal;
+      text-align: center;
+    }
+
+    h6 {
+      font-size: 1em;
+      font-weight: normal;
+      text-align: center;
+      margin-bottom: $spacing-big;
+    }
+
+    figure {
+      display: flex;
+      flex-direction: column;
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+      }
+      
+      label {
+        font-size: .8em;
+      }
+    }
+
+    p {
+      label {
+        font-size: .8em;
+      }
+
+      span {
+        display: inline-block;
+        font-size: 1.2em;
+        width: 100%;
+        
+        &.temperature {
+          font-size: 3.5em;
+        }
+      }
+    }
+  }
+}
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .weather-page-container {
+    padding: $spacing-medium;
+  }
+}
+
+@media (max-width: $breakpoint-smartphone) {
+  .weather-page-container {
+    $common-width: 100%;
+    
+    input {
+      width: $common-width;
+    }
+
+    mat-progress-bar {
+      max-height: initial;
+    }
+
+    .results {
+      mat-spinner {
+        max-height: 0;
+      }
+
+      .weather-data {
+        width: $common-width;
+      }
+    }
+  }
+}

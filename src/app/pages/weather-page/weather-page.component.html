@@ -1,0 +1,48 @@
+<!-- Search box -->
+<div class="weather-page-container">
+
+  <input matInput placeholder="City" (keyup)="emitCityNameChange($event)" />
+
+  <mat-progress-bar *ngIf="isLoading && !hasError" mode="indeterminate"></mat-progress-bar>
+
+  <!-- Search results -->
+  <section class="results">
+    <!-- Loading indicator -->
+    <mat-spinner *ngIf="isLoading && !hasError" mode="indeterminate"></mat-spinner>
+
+    <p *ngIf="hasError" [ngClass]="{
+      'error': hasError,
+      'success': !hasError
+    }">{{ responseMessage }}</p>
+
+    <div *ngIf="!!weather && !isLoading && !hasError" class="weather-data">
+      <h1> {{ weather?.cityName }} </h1>
+      <h6 class="caption"> {{ weather?.description }}</h6>
+
+      <div class="row align-top">
+        <p class="col s6">
+          <label for="temperature">Temperature</label>
+          <span class="temperature">{{ weather?.temperature }} &deg;C</span>
+        </p>
+
+        <figure class="col s6">
+          <label>Preview</label>
+          <img src="{{ weatherIconUrl }}" alt="{{ weather.title }}" />
+        </figure>
+      </div>
+
+      <div class="row">
+        <p class="col s6">
+          <label for="pressure">Pressure</label>
+          <span class="pressure">{{ weather?.pressure }} hPa</span>
+        </p>
+
+        <p class="col s6">
+          <label for="humidity">Humidity</label>
+          <span class="humidity">{{ weather?.humidity }}%</span>
+        </p>
+      </div>
+    </div>
+
+  </section>
+</div>
