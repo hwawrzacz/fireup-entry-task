@@ -1,19 +1,19 @@
 <!-- Search box -->
 <div class="weather-page-container">
 
-  <input matInput placeholder="City" />
+  <input matInput placeholder="City" (keyup)="emitCityNameChange($event)" />
 
   <!-- Search results -->
   <section class="results">
     <!-- Loading indicator -->
-    <mat-spinner *ngIf="true" mode="indeterminate"></mat-spinner>
+    <mat-spinner *ngIf="isLoading && !hasError" mode="indeterminate"></mat-spinner>
 
-    <p *ngIf="true" [ngClass]="{
-      'error': true,
-      'success': false
-    }"></p>
+    <p *ngIf="hasError" [ngClass]="{
+      'error': hasError,
+      'success': !hasError
+    }">{{ responseMessage }}</p>
 
-    <div *ngIf="true" class="weather-data">
+    <div *ngIf="!isLoading && !hasError" class="weather-data">
       <h1>Gliwice</h1>
       <h6 class="caption">Clouds, rain, clouds, more rain</h6>
 
